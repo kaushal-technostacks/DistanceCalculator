@@ -1,11 +1,12 @@
 import React from "react";
 import renderer from "react-test-renderer";
-
-import App from "./App";
+import { getDistanceFromLatLonInKm } from "./src/utils/Calculations";
 
 describe("<App />", () => {
-  it("has 1 child", () => {
-    const tree = renderer.create(<App />).toJSON();
-    expect(tree.children.length).toBe(1);
+  it("should provide valid result on proper co-ordinates", () => {
+    //[lat1,lon1,lat2,lon2]
+    const params = [12, 6, 12, 24];
+    const result = getDistanceFromLatLonInKm(...params);
+    expect(result).toBeDefined();
   });
 });
